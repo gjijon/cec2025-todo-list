@@ -1,0 +1,9 @@
+<app-list-item (item) = "agregar($event)"></app-list-item>
+
+<ul>
+@for (i of lista(); track i.nombre_item) {      
+    <li><button (click)="terminar(i)">Marcar como Hecho</button> {{ i.nombre_item }}</li>
+} @empty {
+    <li>No exiten tareas</li>
+}
+</ul>
