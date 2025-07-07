@@ -1,0 +1,22 @@
+<h2>Formulario Reactivo</h2>
+    <form [formGroup]="miFormulario" (ngSubmit)="addItem()">
+      <div>
+        <label for="campoA">Nombre:</label>
+        <input id="campoA" formControlName="campoA" />
+      </div>
+
+      <div>
+        <label for="campoB">Apellido:</label>
+        <input id="campoB" formControlName="campoB" />
+      </div>
+
+      <button type="submit">Añadir</button>
+    </form>
+
+    <hr />
+
+    <ul>
+      <li *ngFor="let item of items; let i = index">
+        {{ i + 1 }}. {{ item.campoA }} — {{ item.campoB }}
+      </li>
+    </ul>
