@@ -1,0 +1,49 @@
+<form [formGroup]="usuarioForm" (ngSubmit)="onSubmit()">
+  <div>
+    <label for="usuario">Usuario:</label>
+    <input id="usuario" formControlName="usuario" />
+  </div>
+
+  <div>
+    <label for="nombre">Nombre:</label>
+    <input id="nombre" formControlName="nombre" />
+  </div>
+
+  <div>
+    <label for="apellido">Apellido:</label>
+    <input id="apellido" formControlName="apellido" />
+  </div>
+
+  <button type="submit">
+    {{ editingId === null ? 'Crear Usuario' : 'Actualizar Usuario' }}
+  </button>
+  <button type="button" *ngIf="editingId !== null" (click)="onCancel()">
+    Cancelar
+  </button>
+</form>
+
+<hr />
+
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Usuario</th>
+      <th>Nombre</th>
+      <th>Apellido</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let u of usuarios">
+      <td>{{ u.id }}</td>
+      <td>{{ u.usuario }}</td>
+      <td>{{ u.nombre }}</td>
+      <td>{{ u.apellido }}</td>
+      <td>
+        <button (click)="onEdit(u)">Editar</button>
+        <button (click)="onDelete(u.id)">Eliminar</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
